@@ -9,7 +9,7 @@ const servers = {
             description: "Deployed hypothetical server 2", // name
         },
         {
-            url: "https://daas-middleware.onrender.com", // url
+            url: "https://daas-middleware.onrender.com/api", // url
             description: "Middleware server", // name
         },
     ],
