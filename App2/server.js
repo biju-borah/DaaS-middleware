@@ -9,7 +9,7 @@ app.use(express.json());
 // Simulated data
 const app2Data = { message: 'Data from App2', transaction: 1000 };
 
-app.get('/api/data', (req, res) => {
+app.get('/api/data2', (req, res) => {
   res.status(200).json(app2Data);
 });
 

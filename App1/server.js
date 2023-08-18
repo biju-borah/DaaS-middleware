@@ -9,11 +9,11 @@ app.use(express.json());
 // Simulated data
 const app1Data = { message: 'Data from App1', transaction: 500 };
 
-app.get('/api/data', (req, res) => {
+app.get('/api/data1', (req, res) => {
   res.status(200).json(app1Data);
 });
 
-app.post('/api/data', (req, res) => {
+app.post('/api/postData', (req, res) => {
   const amount = req.body.amount
   const totalBill = amount + app1Data.transaction
 
