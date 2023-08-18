@@ -15,8 +15,8 @@ app.use('/api/docs', swaggerUiExpress.serve, swaggerUiExpress.setup(docs));
 
 
 // Simulated URLs for App1 and App2
-const app1URL = 'https://daas-app1.onrender.com/api/data1';
-const app2URL = 'https://daas-app2.onrender.com/api/postData';
+const app1URL = 'https://daas-app1.onrender.com/api/postData';
+const app2URL = 'https://daas-app2.onrender.com/api/data2';
 
 app.get('/api/totalBilling', async (req, res) => {
   try {
@@ -30,6 +30,10 @@ app.get('/api/totalBilling', async (req, res) => {
     res.status(500).json(error);
   }
 });
+
+app.get("/", (req, res) => {
+  res.redirect("/api/docs")
+})
 
 app.listen(port, () => {
   console.log(`Integration server is running on port ${port}`);
