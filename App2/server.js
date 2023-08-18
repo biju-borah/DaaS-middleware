@@ -7,10 +7,10 @@ app.use(cors());
 app.use(express.json());
 
 // Simulated data
-const app2Data = { message: 'Data from App2' };
+const app2Data = { message: 'Data from App2', transaction: 1000 };
 
 app.get('/api/data', (req, res) => {
-  res.json(app2Data);
+  res.status(200).json(app2Data);
 });
 
 app.listen(port, () => {

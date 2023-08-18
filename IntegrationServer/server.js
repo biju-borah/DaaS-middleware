@@ -10,41 +10,26 @@ app.use(express.json());
 const app1URL = 'http://localhost:3001/api/data';
 const app2URL = 'http://localhost:3002/api/data';
 
-app.get('/get_data_from_app1', async (req, res) => {
+app.get('/api/totalBilling', async (req, res) => {
   try {
-    const response = await axios.get(app1URL);
-    res.json(response.data);
+    const res2 = await axios.get(app2URL, {
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "axios 0.21.1"
+      }
+    });
+    const amount = 10
+    const res1 = await axios.post(app1URL, {
+      headers: {
+        Accept: "application/json",
+        "User-Agent": "axios 0.21.1"
+      }
+    }, {
+      amount: amount
+    })
+    res.json(res1);
   } catch (error) {
-    res.status(500).json({ error: 'Error fetching data from App1' });
-  }
-});
-
-app.get('/get_data_from_app2', async (req, res) => {
-  try {
-    const response = await axios.get(app2URL);
-    res.json(response.data);
-  } catch (error) {
-    res.status(500).json({ error: 'Error fetching data from App2' });
-  }
-});
-
-app.post('/send_data_to_app1', async (req, res) => {
-  const data = req.body;
-  try {
-    const response = await axios.post(app1URL, data);
-    res.json(response.data);
-  } catch (error) {
-    res.status(500).json({ error: 'Error sending data to App1' });
-  }
-});
-
-app.post('/send_data_to_app2', async (req, res) => {
-  const data = req.body;
-  try {
-    const response = await axios.post(app2URL, data);
-    res.json(response.data);
-  } catch (error) {
-    res.status(500).json({ error: 'Error sending data to App2' });
+    res.status(500).json({ error: error });
   }
 });
 
